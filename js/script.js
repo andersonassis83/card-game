@@ -4,6 +4,8 @@ const text = document.querySelector('H1');
 const cards = [
     {
         id: 1,
+        name:"",
+        class:"",
         atk: 1200,
         def: 850,
         magic: {
@@ -13,6 +15,7 @@ const cards = [
     },
     {
         id: 2,
+        name:"",
         atk: 1300,
         def: 1500,
         magic: {
@@ -42,7 +45,14 @@ const cards = [
 
 function figth(){
     let cardInput1 = inputcard1.value;
-    let cardInput2 = inputcard2.value;
+    let cardInput2 = Math.floor(Math.random() * cards.length);
+
+    while(cardInput2 === cardInput1){
+        cardInput2 = Math.floor(Math.random() * cards.length);
+    }
+
+    inputcard2.value = cardInput2;
+
     duel(cardInput1, cardInput2);
 }
 
@@ -53,28 +63,25 @@ function duel(card1, card2){
         card1 = cards[card1];
         card2 = cards[card2];
         
-        checkCardPoints(card1, card2);
+        checkCardPoints(card1);
     
         if(card1.atk > card2.def){
             text.textContent = "Você ganhou!"
         } else if (card1.atk < card2.def){
-            text.textContent = "Vocêperdeu!"
+            text.textContent = "Você  perdeu!"
         } else if (card1.atk === card2.def){
             text.textContent = "Você empatou!"        
         }
     }
 }
 
-function checkCardPoints(card1, card2){
-    let combat = [card1, card2];
+function checkCardPoints(card1){
+    if(card1.magic.atkMagic === "S"){
+        card1.atk += 500;
+    }
 
-    for (let i = 1; i < combat.length; i++){
-        if(combat[i].magic.atkMagic === 'S'){
-            combat[i].atk += 500;
-        }
-        if(combat[i].magic.defMagic === 'S'){
-            combat[i].def += 500;
-        }
+    if(card1.magic.defMagic === "S"){
+        card1.def += 500;
     }
 }
 
@@ -88,15 +95,11 @@ function checkInput(){
     }
 }
 
-
-
 function addAtkMagic(){
     if((inputcard1.value === null || inputcard1.value === "") || inputcard1.value < 0 || inputcard1.value > cards.length){
         alert("preencha o campo com um número válido.");
     } else {
         cards[inputcard1.value].magic.atkMagic = 'S';
-        text.textContent =  cards[inputcard1.value].magic.atkMagic;
-
     }
 }
 
