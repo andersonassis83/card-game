@@ -4,7 +4,7 @@ const text = document.querySelector('H1');
 const cards = [
     {
         id: 1,
-        name:"",
+        name:"Uriak - o veloz",
         class:"",
         atk: 1200,
         def: 850,
@@ -15,7 +15,8 @@ const cards = [
     },
     {
         id: 2,
-        name:"",
+        name:"Shiokay o ninja atrevido",
+        class:"",
         atk: 1300,
         def: 1500,
         magic: {
@@ -25,6 +26,8 @@ const cards = [
     },
     {
         id: 3,
+        name:"Qilla a maga elemental",
+        class:"",
         atk: 1200,
         def: 1850,
         magic: {
@@ -34,6 +37,8 @@ const cards = [
     },
     {
         id: 4,
+        name:"Gally - cyber guerreira",
+        class:"",
         atk: 1300,
         def: 1100,
         magic: {
